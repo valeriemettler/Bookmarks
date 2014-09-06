@@ -23,11 +23,11 @@ class BookmarksController < ApplicationController
 
   # POST /bookmarks
   # POST /bookmarks.json
-  def create
-    @bookmark = Bookmark.new(bookmark_params)
+  #def create
+    #@bookmark = Bookmark.new(bookmark_params)
 
-    respond_to do |format|
-      if @bookmark.save
+    #respond_to do |format|
+      #if @bookmark.save
         # topic_names = params[:topic_names]
         # topic_names = topic_names.split(" ")
         # topic_names.each do |topic_name|
@@ -39,14 +39,30 @@ class BookmarksController < ApplicationController
 
         # add bookmark to user by creating a user bookmark similar to topic bookmark (but with current_user)
 
+  def create
+    @bookmark = Bookmark.new(bookmark_params)
+    @bookmark.user = current_user
+    if @bookmark.save
+      topic_names = params[:topic_names]
+      topic_names = topic_names.map{|n| n.split("#").last}
+      topic_names.each do |topic|
+        topic = Topic.find_or_create_by(name: topic)
+        @bookmark.topics << topic
+      end
+      respond_to do |format|
         format.html { redirect_to @bookmark, notice: 'Bookmark was successfully created.' }
         format.json { render action: 'show', status: :created, location: @bookmark }
-      else
+      end
+    else
+      respond_to do |format|
         format.html { render action: 'new' }
         format.json { render json: @bookmark.errors, status: :unprocessable_entity }
       end
-    end
+    end   
   end
+
+        
+
 
   # PATCH/PUT /bookmarks/1
   # PATCH/PUT /bookmarks/1.json
