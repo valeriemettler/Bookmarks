@@ -23,6 +23,7 @@ class BookmarksController < ApplicationController
 
   # POST /bookmarks
   # POST /bookmarks.json
+  
   #def create
     #@bookmark = Bookmark.new(bookmark_params)
 
@@ -61,8 +62,7 @@ class BookmarksController < ApplicationController
     end   
   end
 
-        
-
+      
 
   # PATCH/PUT /bookmarks/1
   # PATCH/PUT /bookmarks/1.json

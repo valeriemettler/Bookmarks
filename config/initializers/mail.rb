@@ -28,3 +28,5 @@ end
 if Rails.env.development?
   ActionMailer::Base.register_interceptor(DevelopmentMailInterceptor)
 end
+
+# blocmark_app@sandbox47f29783c5c947318f25658848f76167.mailgun.org
