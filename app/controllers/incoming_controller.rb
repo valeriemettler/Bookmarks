@@ -16,11 +16,11 @@ skip_before_filter :verify_authenticity_token
         topics << Topic.find_or_create_by_name(name)
       end
       if @bookmark.save
-        topics.each do |topic|
+        topics.each do |topic| 
           @bookmark.topics << topic
         end
         user.bookmarks << @bookmark
-        #FollowUpMailer.notify(@bookmark).deliver
+        FollowUpMailer.notify(@bookmark).deliver
       end
     end    
     head 200 

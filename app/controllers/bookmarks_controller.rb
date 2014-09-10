@@ -45,10 +45,10 @@ class BookmarksController < ApplicationController
     @bookmark.user = current_user
     if @bookmark.save
       topic_names = params[:topic_names]
-      topic_names = topic_names.map{|n| n.split("#").last}
-      topic_names.each do |topic|
-        topic = Topic.find_or_create_by(name: topic)
-        @bookmark.topics << topic
+      topic_names = topic_names.split(' ')
+      topic_names.each do |topic_name|
+        name = topic_name.sub(/#/, '')
+        topics << Topic.find_or_create_by_name(name)
       end
       respond_to do |format|
         format.html { redirect_to @bookmark, notice: 'Bookmark was successfully created.' }

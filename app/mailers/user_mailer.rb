@@ -1,3 +1,9 @@
 class UserMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "bookmarks@example.com"
+
+  def notify(bookmark)
+    @bookmark = bookmark
+   
+    mail(to: user.email, subject: 'Your Bookmark was Saved!')
+  end
 end
