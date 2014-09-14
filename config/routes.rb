@@ -4,6 +4,7 @@ Bookmarks::Application.routes.draw do
 
     resources :topics
     resources :bookmarks
+    resources :user_bookmarks
 
     resources :likes, only: [:create, :destroy]
 
