@@ -20,7 +20,7 @@ skip_before_filter :verify_authenticity_token
           @bookmark.topics << topic
         end
         user.bookmarks << @bookmark
-        FollowUpMailer.notify(@bookmark).deliver
+        FollowUpMailer.notify(user, @bookmark).deliver
       end
     end    
     head 200 

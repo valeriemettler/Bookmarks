@@ -9,9 +9,13 @@
       <th></th>
     </tr>
   </thead>
-
+<div class="row">
+  <div class="col-md-8">
   <tbody>
     <% @bookmarks.each do |bookmark| %>
+    <div class="media">
+        <div class="media-body">
+          <h4 class="media-heading">
       <tr>
         <td><%= bookmark.url %></td>
         <td><%= link_to 'Show', bookmark %></td>

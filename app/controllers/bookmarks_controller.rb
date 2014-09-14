@@ -41,14 +41,19 @@ class BookmarksController < ApplicationController
         # add bookmark to user by creating a user bookmark similar to topic bookmark (but with current_user)
 
   def create
-    @bookmark = Bookmark.new(bookmark_params)
-    @bookmark.user = current_user
+    bookmark = Bookmark.where(url: params[:bookmark][:url]).first
+
+    @bookmark = bookmark.present? ? bookmark : Bookmark.new(bookmark_params)
+    
     if @bookmark.save
-      topic_names = params[:topic_names]
-      topic_names = topic_names.split(' ')
+      @bookmark.users << current_user
+      Rails.logger.info ">>>>>>>>>>>>> Bookmark: #{@bookmark.inspect}"
+
+      topic_names = params[:topic_names].split(' ')
       topic_names.each do |topic_name|
         name = topic_name.sub(/#/, '')
-        topics << Topic.find_or_create_by_name(name)
+
+        @bookmark.topics << Topic.find_or_create_by_name(name)
       end
       respond_to do |format|
         format.html { redirect_to @bookmark, notice: 'Bookmark was successfully created.' }
