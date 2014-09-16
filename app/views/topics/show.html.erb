@@ -1,10 +1,15 @@
 <p id="notice"><%= notice %></p>
 
+<div class="page-actions">
+  <%= link_to 'Edit', edit_topic_path(@topic), class: 'btn btn-success' %>
+  <%= link_to 'Back', topics_path, class: 'btn btn-success'  %>
+</div>
+
 <p>
-  <strong>Name:</strong>
-  <%= @topic.name %>
+  <strong>#<%= @topic.name %></strong>
+  <ul class="bookmarks">
+    <%= render @topic.bookmarks %>
+  </ul>   
 </p>
 
-<%= link_to 'Edit', edit_topic_path(@topic) %> |
-<%= link_to 'Back', topics_path %>
- <%= render partial: 'likes/like', locals: { bookmark: @bookmark } %>
+ <%#= render partial: 'likes/like', locals: { bookmark: @bookmark } %>

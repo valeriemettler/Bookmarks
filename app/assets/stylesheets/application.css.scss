@@ -15,3 +15,27 @@
  .like {
    margin-top: 20px;
  }
+
+ ul.topics {
+  list-style: none;
+  display: block;
+  li {
+    clear: both;   
+    margin-bottom: 20px;
+  }
+
+  ul.bookmarks li {
+    margin-top: -20px;
+  }
+
+ }
+
+ ul.bookmarks li {
+    clear: none;
+    float:left;
+    margin: 0 20px 20px 0;
+  }
+
+.page-actions {
+  float: right;
+}

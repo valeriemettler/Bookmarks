@@ -3,25 +3,25 @@ require 'faker'
 
 
 # Create a User
- user = User.new(
-   name:     'Valerie Mettler',
-   email:    'valeriemettler@gmail.com',
-   password: 'helloworld',
- )
- user.skip_confirmation!
- user.save
+ # user = User.new(
+ #   name:     'Valerie Mettler',
+ #   email:    'valeriemettler@gmail.com',
+ #   password: 'helloworld',
+ # )
+ # user.skip_confirmation!
+ # user.save
 
 #Create Users
-# 5.times do
-#   user = User.new(
-#     name:     Faker::Name.name,
-#     email:    Faker::Internet.email,
-#     password: Faker::Lorem.characters(10)
-#   )
-#   user.skip_confirmation!
-#   user.save!
-# end
-# users = User.all
+5.times do
+  user = User.new(
+    name:     Faker::Name.name,
+    email:    Faker::Internet.email,
+    password: Faker::Lorem.characters(10)
+  )
+  user.skip_confirmation!
+  user.save!
+end
+users = User.all
 
 
 #Create Bookmarks
@@ -30,7 +30,7 @@ require 'faker'
     url:    Faker::Internet.url
   )
 end
-bookmarks = Bookmarks.all
+bookmarks = Bookmark.all
 
 #Create Topics
 10.times do
@@ -44,7 +44,7 @@ topics = Topic.all
 # user.bookmarks << bookmark
 users.each do |user|
   3.times do
-    user.bookmarks << Bookmark.sample
+    user.bookmarks << Bookmark.all.sample
   end
 end
 
@@ -52,18 +52,18 @@ end
  # same kind of thing
 topics.each do |topic|
   3.times do
-    user.topics << Topic.sample
+    user.topics << Topic.all.sample
  end
 end
 
 # Create a member
- # member = User.new(
- #   name:     'Member User',
- #   email:    'valeriemettler@gmail.com',
- #   password: 'helloworld',
- # )
- # member.skip_confirmation!
- # member.save
+ member = User.new(
+   name:     'Member User',
+   email:    'valeriemettler@gmail.com',
+   password: 'helloworld',
+ )
+ member.skip_confirmation!
+ member.save
 
 puts "Seed finished"
 puts "#{User.count} users created"

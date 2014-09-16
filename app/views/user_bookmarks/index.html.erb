@@ -1,29 +1,53 @@
 <h1>My Bookmarks</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-<div class="row">
-  <div class="col-md-8">
-  <tbody>
-    
-    <div class="media">
-        <div class="media-body">
-          <h4 class="media-heading">
-      <tr>
-       </td>
-      </tr>
-   
-   
-  </tbody>
-</table>
-
+<ul class="topics">
+    <% @topics.each do |topic| %>
+      <li><%= link_to "##{topic.name}", topic %></li>
+      <ul class="bookmarks">
+        <%= render topic.bookmarks %>
+      </ul>    
+    <% end %>
+</ul>
 <br>
 
-<%= link_to 'Create a New Bookmark', new_bookmark_path %>
+<!-- <h1>My Likes</h1> -->
+
+<!-- <ul class="topics">
+    <% @topics.each do |topic| %>
+      <li><%= link_to "##{topic.name}", topic %></li>
+      <ul class="bookmarks">
+        <%= render topic.bookmarks %>
+      </ul>    
+    <% end %>
+</ul>
+<br> -->
+
+
+<!-- <div class="col-md-4">
+<%= link_to 'Create a New Bookmark', new_bookmark_path, class: 'btn btn-success' %>
+ </div>
+  
+  <table class="table table-striped">
+    <div class="container">
+<tbody>
+  <% @bookmarks.each do |bookmark| %>
+    <div class="col-md-3">
+     <td><%= Topic.name %> </td>
+    </div>
+    <div class="col-md-3">
+      <td><%= link_to bookmark.url, "http://#{bookmark.url}" %></td>
+     </div>
+ 
+     <div class="col-md-3">
+      <td><%= link_to 'Like/Unlike' %></td>
+     </div>
+ 
+      <div class="col-md-3">
+      <td><%= link_to 'Destroy', bookmark, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this bookmark?' } %>    </td>
+    </tr>
+    </div>
+    </div>
+     <% end %>
+    </tbody>
+  </div>
+</table> -->

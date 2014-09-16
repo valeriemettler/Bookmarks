@@ -1,27 +1,11 @@
-<h1>Listing topics</h1>
+<h1>All Bookmarks</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<ul class="topics">
     <% @topics.each do |topic| %>
-      <tr>
-        <td><%= topic.name %></td>
-        <td><%= link_to 'Show', topic %></td>
-        <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
-        <td><%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <li><%= link_to "##{topic.name}", topic %></li>
+      <ul class="bookmarks">
+        <%= render topic.bookmarks %>
+      </ul>    
     <% end %>
-  </tbody>
-</table>
-
+</ul>
 <br>
-
-<%= link_to 'Topic', topic_path %>

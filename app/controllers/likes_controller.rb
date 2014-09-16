@@ -3,6 +3,8 @@ class LikesController < ApplicationController
      @bookmark = Bookmark.find(params[:bookmark_id])
      like = current_user.likes.build(bookmark: @bookmark)
  
+     authorize like
+
      if like.save
        # Add code to generate a success flash and redirect to @bookmark
        flash[:notice] = "Liked bookmark"
