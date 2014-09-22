@@ -8,7 +8,7 @@ skip_before_filter :verify_authenticity_token
     user = User.find_by_email(params[:sender])
     Rails.logger.info "@@@@@@@@@@@@@@@@ User: #{user.inspect}"
     if user
-      @bookmark = Bookmark.new(url: params['stripped-text'])
+      @bookmark = Bookmark.find_or_create_by_url(params['stripped-text'])
       topics = []
       topic_names = params[:subject].split(' ')
       topic_names.each do |topic_name|

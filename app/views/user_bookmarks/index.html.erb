@@ -1,26 +1,30 @@
 <h1>My Bookmarks</h1>
 
-<ul class="topics">
+<ul class="topics">    
     <% @topics.each do |topic| %>
       <li><%= link_to "##{topic.name}", topic %></li>
       <ul class="bookmarks">
-        <%= render topic.bookmarks %>
+        <% topic.bookmarks.each do |bookmark| %>
+          <%= render partial: "bookmarks/bookmark", object: bookmark, locals: {show_remove_button: true} %>
+        <% end %>
       </ul>    
     <% end %>
 </ul>
 <br>
 
-<!-- <h1>My Likes</h1> -->
+<h1>My Likes</h1> 
 
-<!-- <ul class="topics">
-    <% @topics.each do |topic| %>
+<ul class="topics">
+    <% @liked_topics.each do |topic| %>
       <li><%= link_to "##{topic.name}", topic %></li>
       <ul class="bookmarks">
-        <%= render topic.bookmarks %>
+         <% topic.bookmarks.each do |bookmark| %>
+          <%= render partial: "bookmarks/bookmark", object: bookmark, locals: {show_remove_button: false} %>
+        <% end %>
       </ul>    
     <% end %>
 </ul>
-<br> -->
+<br>
 
 
 <!-- <div class="col-md-4">

@@ -51,6 +51,7 @@ end
 gem 'devise'
 gem 'faker'
 gem 'figaro'
+gem 'embedly'
 
 
 # Use ActiveModel has_secure_password

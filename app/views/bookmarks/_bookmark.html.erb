@@ -1,1 +1,31 @@
-<li><%= bookmark.url %></li>
+ 
+<div class="btn-group"> 
+<% show_remove_button ||= false %> 
+
+<li><%= link_to bookmark.url, "http://#{bookmark.url}" %></li>
+<% if current_user %>
+ <div class="like">      
+      <% if show_remove_button %> 
+          <% user_bookmark = get_user_bookmark_for(bookmark) %>
+          <% if user_bookmark  %>
+            <%= link_to "Remove", user_bookmark_path(user_bookmark), class: 'btn btn-danger', method: :delete %>
+          <% end  %>
+      <% else %>    
+        <% if like = current_user.liked(bookmark) %>
+          <%= link_to [bookmark, like], class: 'btn btn-info', method: :delete do %> Unlike <% end %>
+        <% else %>
+          <%= link_to [bookmark, Like.new], class: 'btn btn-info', method: :post do %> Like <% end %>
+       <% end %> 
+    <% end %>
+</div>
+<% end %>
+</div>
+
+
+
+       
+
+
+
+
+<!-- <ul class="like"><%= link_to 'Like/Unlike' %></ul> -->

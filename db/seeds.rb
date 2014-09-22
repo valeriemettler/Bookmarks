@@ -21,22 +21,36 @@ require 'faker'
   user.skip_confirmation!
   user.save!
 end
+# Create a member
+ member = User.new(
+   name:     'Member User',
+   email:    'valeriemettler@gmail.com',
+   password: 'helloworld',
+ )
+ member.skip_confirmation!
+ member.save
 users = User.all
 
 
 #Create Bookmarks
 10.times do
-  Bookmark.create!(
-    url:    Faker::Internet.url
-  )
+  url = Faker::Internet.url
+  if Bookmark.where(url: url).empty?
+    Bookmark.create!(
+      url:    Faker::Internet.url
+    )
+  end
 end
 bookmarks = Bookmark.all
 
 #Create Topics
 10.times do
+  name = Faker::Lorem.word
+  if Topic.where(name: name).empty?
   Topic.create!(
-    name:   Faker::Lorem.sentence
+    name:   Faker::Lorem.word
   )
+ end
 end
 topics = Topic.all
 
@@ -46,24 +60,18 @@ users.each do |user|
   3.times do
     user.bookmarks << Bookmark.all.sample
   end
+  
 end
 
-# do the same thing for topics
- # same kind of thing
-topics.each do |topic|
-  3.times do
-    user.topics << Topic.all.sample
- end
+bookmarks.each do |bookmark|
+  topics.each do |topic|
+      3.times do
+        bookmark.topics << Topic.all.sample
+     end
+  end
 end
 
-# Create a member
- member = User.new(
-   name:     'Member User',
-   email:    'valeriemettler@gmail.com',
-   password: 'helloworld',
- )
- member.skip_confirmation!
- member.save
+
 
 puts "Seed finished"
 puts "#{User.count} users created"

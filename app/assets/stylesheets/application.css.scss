@@ -11,14 +11,16 @@
  .remove {
   display: none;
  }
-
+ 
  .like {
-   margin-top: 20px;
+  margin: 30px;
+
  }
 
- ul.topics {
+ul.topics {
   list-style: none;
   display: block;
+  text-decoration: underline;
   li {
     clear: both;   
     margin-bottom: 20px;
@@ -27,10 +29,10 @@
   ul.bookmarks li {
     margin-top: -20px;
   }
-
  }
 
  ul.bookmarks li {
+    list-style: none;
     clear: none;
     float:left;
     margin: 0 20px 20px 0;
@@ -39,3 +41,10 @@
 .page-actions {
   float: right;
 }
+
+
+
+
+
+
+

@@ -3,10 +3,12 @@ Bookmarks::Application.routes.draw do
   devise_for :users
 
     resources :topics
-    resources :bookmarks
+    resources :bookmarks do
+      resources :likes, only: [:create, :destroy]
+    end
     resources :user_bookmarks
 
-    resources :likes, only: [:create, :destroy]
+    
 
   get "welcome/index"
   get "welcome/about"
