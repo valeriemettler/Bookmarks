@@ -64,14 +64,9 @@ users.each do |user|
 end
 
 bookmarks.each do |bookmark|
-  topics.each do |topic|
-      3.times do
-        bookmark.topics << Topic.all.sample
-     end
-  end
+  topic = Topic.all.sample
+  bookmark.topics << topic
 end
-
-
 
 puts "Seed finished"
 puts "#{User.count} users created"

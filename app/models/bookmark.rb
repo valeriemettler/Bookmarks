@@ -24,6 +24,7 @@ class Bookmark < ActiveRecord::Base
   Rails.logger.info ">>>> embedly obj: #{obj.inspect}"
   # get result and find the attribute for the thumbnail_url
   # set the bookmark's thumbnail_url with that value -- update_attribute(thumbnail_url: val_of_thumbnail_url_from_response)
+  update_attribute(thumbnail_url: obj.images.first['url'])
   true
  end
 

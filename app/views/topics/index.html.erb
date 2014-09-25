@@ -2,10 +2,14 @@
 
 <ul class="topics">
     <% @topics.each do |topic| %>
-      <li><%= link_to "##{topic.name}", topic %></li>
-      <ul class="bookmarks">
-        <%= render topic.bookmarks %>
-      </ul>    
+      <li>
+        <h3><%= link_to "##{topic.name}", topic %></h3>
+        <div class="row">
+          <ul class="bookmarks">
+            <%= render topic.bookmarks %>
+          </ul>  
+        </div> 
+      </li> 
     <% end %>
 </ul>
 <br>
