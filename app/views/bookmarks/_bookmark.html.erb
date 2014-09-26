@@ -4,7 +4,8 @@
 
 <li>
   <div class="bookmark_container">
-    <%= link_to bookmark.url, "http://#{bookmark.url}" %>    
+    <% link_text = bookmark.thumbnail_url.present? ? "<img src='#{bookmark.thumbnail_url}'/>".html_safe : bookmark.url %>
+    <%= link_to link_text, bookmark.url %>    
   </div>
   <% if current_user %>
       <div class="like">      
