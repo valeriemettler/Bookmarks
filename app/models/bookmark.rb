@@ -1,6 +1,9 @@
 class Bookmark < ActiveRecord::Base
   #attr_accessible :thumbnail_url
 
+  require 'embedly'
+  require 'json'
+
   has_many :bookmark_topics
   has_many :topics, through: :bookmark_topics
 
