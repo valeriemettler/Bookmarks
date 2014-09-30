@@ -31,7 +31,7 @@ class Bookmark < ActiveRecord::Base
   image = o.images.first
   Rails.logger.info ">>>>> image: #{image.inspect}"
 
-  update_attribute(:thumbnail_url, image['url'])
+  update_attribute(:thumbnail_url, image['url']) if image && image['url'].present?
   Rails.logger.info ">>>> Now i am: #{self.inspect}"
   true
  end
