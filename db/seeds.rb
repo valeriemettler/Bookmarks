@@ -1,7 +1,5 @@
 require 'faker'
 
-
-
 # Create a User
  # user = User.new(
  #   name:     'Valerie Mettler',
@@ -21,6 +19,7 @@ require 'faker'
   user.skip_confirmation!
   user.save!
 end
+
 # Create a member
  member = User.new(
    name:     'Member User',
@@ -30,7 +29,6 @@ end
  member.skip_confirmation!
  member.save
 users = User.all
-
 
 #Create Bookmarks
 10.times do
@@ -60,16 +58,14 @@ users.each do |user|
   3.times do
     user.bookmarks << Bookmark.all.sample
   end
-  
 end
 
 bookmarks.each do |bookmark|
-  topic = Topic.all.sample
-  bookmark.topics << topic
+topic = Topic.all.sample
+bookmark.topics << topic
 end
 
 puts "Seed finished"
 puts "#{User.count} users created"
 puts "#{Bookmark.count} bookmarks created"
 puts "#{Topic.count} topics created"
-

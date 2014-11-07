@@ -23,5 +23,5 @@ class LikesController < ApplicationController
         flash[:error] = "Unable to remove like. Please try again."
         redirect_to :back
      end
-    end
   end
+end

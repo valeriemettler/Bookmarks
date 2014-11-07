@@ -3,24 +3,21 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.5'
 
-
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
 end
 
+group :production do
+ gem 'pg'
+ gem 'rails_12factor'
+end
 
- group :production do
-   gem 'pg'
-   gem 'rails_12factor'
- end
- 
- group :development do
-   gem 'sqlite3'
- end
+group :development do
+ gem 'sqlite3'
+end
 
 gem 'bootstrap-sass', '~> 3.1.1'
-
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
@@ -52,7 +49,6 @@ gem 'devise'
 gem 'faker'
 gem 'figaro'
 gem 'embedly'
-
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

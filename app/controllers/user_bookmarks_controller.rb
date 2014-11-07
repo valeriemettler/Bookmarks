@@ -1,6 +1,6 @@
 class UserBookmarksController < ApplicationController
-before_action :authenticate_user!
-
+  before_action :authenticate_user!
+  
   def index
     @bookmarks = current_user.bookmarks
     @topics = @bookmarks.collect(&:topics).flatten.uniq
