@@ -49,6 +49,7 @@ gem 'devise'
 gem 'faker'
 gem 'figaro'
 gem 'embedly'
+gem 'rack-zippy'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
